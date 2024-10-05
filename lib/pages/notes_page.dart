@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:notes_app/models/note.dart';
 import 'package:notes_app/models/note_database.dart';
 import 'package:provider/provider.dart';
-import '../models/note_database.dart';
 
 class NotesPage extends StatefulWidget {
   const NotesPage({super.key});
@@ -55,7 +54,7 @@ class _NotesPageState extends State<NotesPage> {
     showDialog(
       context: context, 
       builder: (context) => AlertDialog(
-        title: Text ("Update Note"),
+        title: const Text ("Update Note"),
         content: TextField(controller: textController),
         actions: [
           MaterialButton(
@@ -87,13 +86,17 @@ class _NotesPageState extends State<NotesPage> {
       List<Note> currentNotes = noteDatabase.currentNotes;
 
       return Scaffold(
-        appBar: AppBar(title: Text('Notes')),
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+        ),
         floatingActionButton: FloatingActionButton(
           onPressed: createNote,
-
           child: const Icon(Icons.add),
         ),
-        body: ListView.builder(
+        drawer: Drawer(),
+        body: 
+        ListView.builder(
           itemCount: currentNotes.length,
           itemBuilder: (context, index) {
 
@@ -120,6 +123,6 @@ class _NotesPageState extends State<NotesPage> {
               ),
             );
           }
-      );
+      ));
     }
   }
