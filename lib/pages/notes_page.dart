@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/components/drawer.dart';
 import 'package:notes_app/models/note.dart';
 import 'package:notes_app/models/note_database.dart';
 import 'package:provider/provider.dart';
@@ -94,7 +95,7 @@ class _NotesPageState extends State<NotesPage> {
           onPressed: createNote,
           child: const Icon(Icons.add),
         ),
-        drawer: Drawer(),
+        drawer: MyDrawer(),
         body: 
         ListView.builder(
           itemCount: currentNotes.length,
